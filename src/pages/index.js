@@ -1,5 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
+
+import Header from '@components/Header';
+
 import styles from '@styles/Home.module.scss'
 
 
@@ -12,10 +15,9 @@ export default function Home() {
         <link rel="icon" href="../favicon.ico" />
       </Head>
 
+        <Header />
+
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Shrinkray&apos;s Store
-        </h1>
 
         <p className={styles.description}>
           Get started by editing{' '}
