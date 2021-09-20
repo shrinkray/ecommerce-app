@@ -1,6 +1,6 @@
 import styles from './Container.module.scss';
 
-const Container = ({children, className}) => {
+const Container = ({children, className, ...rest}) => {
     let containerClassName = styles.container;
 
    if (className) {
@@ -8,7 +8,7 @@ const Container = ({children, className}) => {
     }
 
     return (
-        <div className={containerClassName}>
+        <div className={containerClassName} {...rest}>
             {children}
         </div>
     )

@@ -1,4 +1,5 @@
 import styles from './Header.module.scss';
+import {FaShoppingCart} from 'react-icons/fa';
 
 import Container from '@components/Container';
 
@@ -9,7 +10,8 @@ const Header = () => {
                 <p className={styles.headerTitle}>
                     Shrinkray&apos;s Store
                 </p>
-                <p>
+                <p className={styles.headerCart}>
+                    <FaShoppingCart />
                     $0.00
                 </p>
             </Container>
