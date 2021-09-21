@@ -3,9 +3,11 @@ import Image from 'next/image'
 
 import Header from '@components/Header';
 import Container from '@components/Container';
+import Button from '@components/Button';
 
 import styles from '@styles/Home.module.scss'
 
+import products from '@data/products.json';
 
 export default function Home() {
   return (
@@ -24,26 +26,21 @@ export default function Home() {
           <h1>Hyper Bros. Trading Cards</h1>
             <h2>Available Cards</h2>
             <ul className={styles.products}>
-                <li >
-                    <img src = '/images/bowser-holo.jpg' alt = 'Bowser Holo' />
-                    <h3>Bowser Holographic</h3>
-                    <p>$99.99</p>
-                    <p><button>Add to Cart</button></p>
-                </li >
+                {products.map(product => {
+                    return (
+                        <li key={ product.id }>
+                            <img src ={ product.image } alt ={`Card of ${ product.title }`} />
+                            <h3 className={styles.productTitle}>
+                                { product.title }
+                            </h3>
+                            <p className={styles.productPrice}>
+                                ${ product.price }
+                            </p>
+                            <p><Button>Add to Cart</Button></p>
+                        </li >
+                    )
+                })}
 
-                 <li >
-                    <img src = '/images/bowser-holo.jpg' alt = 'Bowser Holo' />
-                    <h3>Bowser Holographic</h3>
-                    <p>$99.99</p>
-                    <p><button>Add to Cart</button></p>
-                </li >
-
-                 <li >
-                    <img src = '/images/bowser-holo.jpg' alt = 'Bowser Holo' />
-                    <h3>Bowser Holographic</h3>
-                    <p>$99.99</p>
-                    <p><button>Add to Cart</button></p>
-                </li >
 
                 </ul >
         </Container>
