@@ -80,7 +80,7 @@ export default function Home({ products }) {
 
 export async function getStaticProps() {
     const client = new ApolloClient({
-        uri: 'https://hyper.gregmiller.tech/graphql',
+        uri: 'https://hyper.shrinkray.com/graphql',
         cache: new InMemoryCache()
     });
 

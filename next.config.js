@@ -2,6 +2,6 @@ module.exports = {
     reactStrictMode: true,
     target: 'serverless',
     images: {
-        domains: ['hyper.gregmiller.tech']
+        domains: ['hyper.shrinkray.com']
     }
 };
