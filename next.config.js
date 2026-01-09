@@ -1,7 +1,11 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     reactStrictMode: true,
-    target: 'serverless',
+    output: 'export',
     images: {
-        domains: ['hyper.shrinkray.com']
+        domains: ['hyper.shrinkray.com'],
+        unoptimized: true
     }
 };
+
+module.exports = nextConfig;

@@ -18,11 +18,29 @@ $color-link: blueviolet;
   margin: 0;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 3rem;
+  
+
+  .productItem {
+    display: flex;
+    flex-direction: column;
+	gap: 0.2rem;
+	align-items: center;
   }
+  
+  img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: 100%;
+	object-position: start;
+    object-fit: contain;
+  }
+}
+
 .productTitle {
   font-size: 1.4em;
   margin: 0.4em 0 0;
-  }
+}
+
 .productPrice {
   margin: 0.4em 0 0;
-  }
+}

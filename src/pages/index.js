@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Script from 'next/script';
 
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 import Header from '@components/Header';
 import Container from '@components/Container';
@@ -36,27 +36,32 @@ export default function Home({ products }) {
                             const { featuredImage } = product;
                             return (
                                 <li key={product.id}>
-                                    <Image
-                                        width={featuredImage.mediaDetails.width}
-                                        height={featuredImage.mediaDetails.height}
-                                        src={featuredImage.sourceUrl}
-                                        alt={featuredImage.altText}
-                                    />
-                                    <h3 className={styles.productTitle}>{product.title}</h3>
-                                    <p className={styles.productPrice}>${product.productPrice}</p>
-                                    <p>
-                                        <Button
-                                            className="snipcart-add-item"
-                                            data-item-id={product.productId}
-                                            data-item-price={product.productPrice}
-                                            data-item-url="/"
-                                            data-item-description=""
-                                            data-item-image={featuredImage.sourceUrl}
-                                            data-item-name={product.title}
-                                        >
-                                            Add to Cart
-                                        </Button>
-                                    </p>
+                                    <div className={styles.productItem}>
+										<Image
+											className={styles.productImage}
+                                            width={featuredImage.mediaDetails.width}
+                                            height={featuredImage.mediaDetails.height}
+                                            src={featuredImage.sourceUrl}
+                                            alt={featuredImage.altText}
+                                        />
+                                        <h3 className={styles.productTitle}>{product.title}</h3>
+                                        <p className={styles.productPrice}>
+                                            ${product.productPrice}
+                                        </p>
+                                        <p>
+                                            <Button
+                                                className="snipcart-add-item"
+                                                data-item-id={product.productId}
+                                                data-item-price={product.productPrice}
+                                                data-item-url="/"
+                                                data-item-description=""
+                                                data-item-image={featuredImage.sourceUrl}
+                                                data-item-name={product.title}
+                                            >
+                                                Add to Cart
+                                            </Button>
+                                        </p>
+                                    </div>
                                 </li>
                             );
                         })}
@@ -80,7 +85,10 @@ export default function Home({ products }) {
 
 export async function getStaticProps() {
     const client = new ApolloClient({
-        uri: 'https://hyper.shrinkray.com/graphql',
+        link: new HttpLink({
+            uri: 'https://hyper.shrinkray.com/graphql',
+            fetch
+        }),
         cache: new InMemoryCache()
     });
 
