@@ -7,4 +7,4 @@
   NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
-  package = "@netlify-plugin-one"
+  package = "netlify-plugin-one"
