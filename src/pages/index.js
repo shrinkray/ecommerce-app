@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Script from 'next/script';
 
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 import Header from '@components/Header';
 import Container from '@components/Container';
@@ -85,7 +85,10 @@ export default function Home({ products }) {
 
 export async function getStaticProps() {
     const client = new ApolloClient({
-        uri: 'https://hyper.shrinkray.com/graphql',
+        link: new HttpLink({
+            uri: 'https://hyper.shrinkray.com/graphql',
+            fetch
+        }),
         cache: new InMemoryCache()
     });
 
